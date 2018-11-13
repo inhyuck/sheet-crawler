@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>NEXTERS RECRUIT List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h1>디자이너 상세</h1>
+<table class="table">
+{{#resumeDesign}}
+    <tr>
+        <th scope="row">행 번호</th>
+    </tr>
+    <tr>
+        <td>{{rowId}}</td>
+    </tr>
+    <tr>
+        <td>timestamp</td>
+    </tr>
+    <tr>
+        <td>{{timestamp}}</td>
+    </tr>
+    <tr>
+        <td>name</td>
+    </tr>
+        <td>{{name}}</td>
+    <tr>
+        <td>email</td>
+    </tr>
+    <tr>
+        <td>{{email}}</td>
+    </tr>
+    <tr>
+        <td>phoneNumber</td>
+    </tr>
+    <tr>
+        <td>{{phoneNumber}}</td>
+    </tr>
+    <tr>
+        <td>1. 현재 직업을 선택해주세요.</td>
+    </tr>
+    <tr>
+        <td>{{question1}}</td>
+    </tr>
+    <tr>
+        <td>2-1. 자신이 가장 자신있는 분야를 선택해주세요.(중복가능)</td>
+    </tr>
+    <tr>
+        <td>{{question2}}</td>
+    </tr>
+    <tr>
+        <td>2-2. 넥스터즈에서 해보고싶은 분야를 선택해주세요.(중복가능)</td>
+    </tr>
+    <tr>
+        <td>{{question2_2}}</td>
+    </tr>
+    <tr>
+        <td>3. 넥스터즈에 지원하는 이유에 대해 설명해주세요.(300자 제한)</td>
+    </tr>
+    <tr>
+        <td>{{question3}}</td>
+    </tr>
+    <tr>
+        <td>4. 자신의 강점 한 가지를 포함해 자유롭게 자기소개를 해주세요. (300자 제한)</td>
+    </tr>
+    <tr>
+        <td>{{question4}}</td>
+    </tr>
+    <tr>
+        <td>5. 팀으로 작업하며 문제에 부딪힌 경험과 그 갈등을 어떻게 해결했는지 설명해주세요. (500자 제한)</td>
+    </tr>
+    <tr>
+        <td>{{question5}}</td>
+    </tr>
+    <tr>
+        <td>6. 자신의 주요 분야와 관련된 대표적인 프로젝트 경험을 적어주세요. (500자 제한)</td>
+    </tr>
+    <tr>
+        <td>{{question6}}</td>
+    </tr>
+    <tr>
+        <td>7. 개인 포트폴리오를 첨부해주세요. (최대 20MB제한 / PDF로 제출)</td>
+    </tr>
+    <tr>
+        <td><a href="{{portfolioLink}}" class="btn btn-link" role="button" aria-pressed="true">Link</a></td>
+    </tr>
+{{/resumeDesign}}
+</table>
+</body>
+</html>
