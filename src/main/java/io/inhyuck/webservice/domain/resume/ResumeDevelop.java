@@ -1,12 +1,12 @@
 package io.inhyuck.webservice.domain.resume;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import lombok.ToString;
 
 @Data
+@Builder
 @AllArgsConstructor
-@ToString
 public class ResumeDevelop {
     private Long rowId;
     private String timestamp;
@@ -15,8 +15,11 @@ public class ResumeDevelop {
     private String phoneNumber;
     private String question1;
     private String question2;
+    private String question2_2;
     private String question3;
     private String question4;
     private String question5;
     private String question6;
+    private String question7;
+    private String question8;
 }
