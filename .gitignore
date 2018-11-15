@@ -28,4 +28,4 @@
 ###settings###
 application.properties
 application.yml
-service.json
+recruit-service.json
