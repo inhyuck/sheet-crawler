@@ -1,12 +1,10 @@
 package io.inhyuck.webservice.domain.resume;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Builder
-@AllArgsConstructor
 public class ResumeDevelop {
     private Long rowId;
     private String timestamp;

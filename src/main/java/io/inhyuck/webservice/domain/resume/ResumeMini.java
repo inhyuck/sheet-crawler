@@ -5,8 +5,8 @@ import lombok.Data;
 
 @Data
 @Builder
-public class ResumeDesign {
-    private Long rowId;
+public class ResumeMini {
+    private String rowId;
     private String timestamp;
     private String name;
     private String email;
@@ -14,9 +14,4 @@ public class ResumeDesign {
     private String question1;
     private String question2;
     private String question2_2;
-    private String question3;
-    private String question4;
-    private String question5;
-    private String question6;
-    private String portfolioLink;
 }
