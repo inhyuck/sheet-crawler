@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>NEXTERS RECRUIT List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/common.css">
+    <script src="/js/common.js"></script>
+</head>
+<body>
+<div class = "container">
+    <h1>{{role}} List</h1>
+    <table class="table table-horizontal table-bordered">
+        <thead class="thead-strong">
+        <tr>
+            <th>No</th>
+            <th>time</th>
+            <th>name</th>
+            <th>e-mail</th>
+            <th>phone</th>
+            <th>job</th>
+            <th>주분야</th>
+            <th>희망분야</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        {{#each resumeList}}
+            <tr data-url="/{{role}}/{{rowId}}">
+                <td>{{rowId}}</td>
+                <td>{{timestamp}}</td>
+                <td>{{name}}</td>
+                <td>{{email}}</td>
+                <td>{{phoneNumber}}</td>
+                <td>{{question1}}</td>
+                <td>{{question2}}</td>
+                <td>{{question2_2}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
