@@ -25,14 +25,9 @@ public class WebController {
     @Autowired
     ResumeService resumeService;
 
-    @GetMapping("/test")
+    @GetMapping("/index")
     public String test() {
-        return "test";
-    }
-
-    @GetMapping("/")
-    public String main() {
-        return "login";
+        return "index";
     }
 
     @GetMapping("/list/{role}")
