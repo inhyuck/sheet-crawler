@@ -1,16 +1,21 @@
 <!DOCTYPE HTML>
-<html>
 <head>
     <title>NEXTERS RECRUIT 지원서 확인</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/css/signin.css" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
-<h1>NEXTERS RECRUIT 지원서 로그인</h1>
-<h2>로그인</h2>
-<button>버튼튼</button>
+<body class="text-center">
+    <form class="form-signin" action="/authenticate" method="post">
+        <h1 class="h3 mb-3 font-weight-normal">NEXTERS 14th</h1>
+        <label for="username" class="sr-only">Username</label>
+        <input type="username" id="username" name = "username" class="form-control" placeholder="Enter username" required autofocus>
+        <label for="password" class="sr-only">Password</label>
+        <input type="password" id="password" name = "password" class="form-control" placeholder="Password" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
 </body>
 </html>
