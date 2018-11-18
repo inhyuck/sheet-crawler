@@ -20,15 +20,10 @@ import java.util.List;
 
 @Controller
 @AllArgsConstructor
-public class WebController {
+public class SheetController {
 
     @Autowired
     ResumeService resumeService;
-
-    @GetMapping("/index")
-    public String test() {
-        return "index";
-    }
 
     @GetMapping("/list/{role}")
     public String findAll(Model model, @PathVariable("role") String role) throws IOException {

@@ -33,6 +33,8 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-devtools')
     implementation('com.google.api-client:google-api-client:1.22.0')
     implementation('com.google.apis:google-api-services-sheets:v4-rev483-1.22.0')
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.security:spring-security-taglibs")
 
     runtimeOnly('com.h2database:h2')
     runtimeOnly('mysql:mysql-connector-java')
