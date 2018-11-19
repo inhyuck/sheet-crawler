@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 public class MySheetProperties {
     private String developer;
     private String designer;
-    private String userInfo;
+    private String memberInfo;
     private String sheetName;
     private String startLow;
     private String lastLow;
