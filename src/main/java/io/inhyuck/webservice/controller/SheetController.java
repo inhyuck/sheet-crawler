@@ -34,7 +34,7 @@ public class SheetController {
     }
 
     @GetMapping("/developer/{rowId}")
-    public String findOneDevleoper(Model model, @PathVariable("rowId") String rowId) throws IOException {
+    public String findOneDeveloper(Model model, @PathVariable("rowId") String rowId) throws IOException {
         ResumeDevelop resumeDevelop = resumeService.findOneDeveloper(rowId);
         model.addAttribute("role", "developer");
         model.addAttribute("resumeDevelop", resumeDevelop);
@@ -43,7 +43,7 @@ public class SheetController {
 
     @GetMapping("/designer/{rowId}")
     public String findOneDesigner(Model model, @PathVariable("rowId") String rowId)  throws IOException {
-        ResumeDesign resumeDesign = resumeService.findOneDesinger(rowId);
+        ResumeDesign resumeDesign = resumeService.findOneDesigner(rowId);
         model.addAttribute("role", "designer");
         model.addAttribute("resumeDesign", resumeDesign);
         return "detailDesinger";
