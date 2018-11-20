@@ -13,6 +13,7 @@ import io.inhyuck.webservice.config.MySheetProperties;
 import io.inhyuck.webservice.domain.resume.ResumeDesign;
 import io.inhyuck.webservice.domain.resume.ResumeDevelop;
 import io.inhyuck.webservice.domain.resume.ResumeMini;
+import io.inhyuck.webservice.domain.resume.UrlList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,16 +23,19 @@ import java.util.List;
 
 @Service
 public class ResumeService {
+    static final String DEVELOPER = "developer";
+    static final String DESIGNER = "designer";
+
     @Autowired
     MySheetProperties sheetProperties;
     @Autowired
     SheetAPI sheetAPI;
 
     public List<ResumeMini> findAll(String role) throws IOException {
-        List<List<Object>> values;
-        if (role.equals("developer")) {
+        List<List<Object>> values = null;
+        if (role.equals(DEVELOPER)) {
             values = sheetAPI.findAll(sheetProperties.getDeveloper());
-        } else {
+        } else if (role.equals(DESIGNER)){
             values = sheetAPI.findAll(sheetProperties.getDesigner());
         }
 
@@ -54,7 +58,7 @@ public class ResumeService {
         return resumeList;
     }
 
-    public ResumeDesign findOneDesinger(String rowId) throws IOException {
+    public ResumeDesign findOneDesigner(String rowId) throws IOException {
         List<Object> values = sheetAPI.findOne(sheetProperties.getDesigner(), rowId);
         return ResumeDesign.builder()
                 .rowId(Long.parseLong(rowId))
@@ -89,7 +93,7 @@ public class ResumeService {
                 .question5(values.get(9).toString())
                 .question6(values.get(10).toString())
                 .question7(values.get(11).toString())
-                .question8(values.get(12).toString())
+                .urlList((values.size() == 13) ? new UrlList(values.get(12).toString()) : new UrlList("무응답"))
                 .build();
     }
 }

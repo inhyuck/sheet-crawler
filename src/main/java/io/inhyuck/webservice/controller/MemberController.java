@@ -19,14 +19,13 @@ public class MemberController {
     @Autowired
     MemberService memberService;
 
-    @GetMapping({"/", "/login"})
+    @GetMapping("/login")
     public String login(LoginForm loginForm, Model model) {
         return "login";
     }
 
-    @GetMapping("/home")
+    @GetMapping({"/", "/home"})
     public String home() {
-        System.out.println("home controller 호출!");
         return "home";
     }
 

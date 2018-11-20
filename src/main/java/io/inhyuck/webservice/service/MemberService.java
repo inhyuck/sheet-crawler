@@ -22,7 +22,6 @@ public class MemberService {
     SheetAPI sheetAPI;
 
     public Member authenticate(String username, String password) throws IOException {
-        System.out.println("=============" + "authenticate 호출!" );
         List<List<Object>> values = sheetAPI.findAll(sheetProperties.getMemberInfo());
         Member foundMember = null;
         for(List<Object> member : values) {

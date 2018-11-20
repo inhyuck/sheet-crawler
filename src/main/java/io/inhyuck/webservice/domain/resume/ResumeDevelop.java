@@ -19,5 +19,5 @@ public class ResumeDevelop {
     private String question5;
     private String question6;
     private String question7;
-    private String question8;
+    private UrlList urlList;
 }
