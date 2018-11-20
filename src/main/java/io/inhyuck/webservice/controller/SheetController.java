@@ -46,6 +46,8 @@ public class SheetController {
         ResumeDevelop resumeDevelop = resumeService.findOneDeveloper(rowId);
         model.addAttribute("role", "developer");
         model.addAttribute("resumeDevelop", resumeDevelop);
+        model.addAttribute("preRowId", resumeDevelop.getRowId() - 1);
+        model.addAttribute("nextRowId", resumeDevelop.getRowId() + 1);
         return "detailDeveloper";
     }
 
@@ -54,6 +56,8 @@ public class SheetController {
         ResumeDesign resumeDesign = resumeService.findOneDesigner(rowId);
         model.addAttribute("role", "designer");
         model.addAttribute("resumeDesign", resumeDesign);
+        model.addAttribute("preRowId", resumeDesign.getRowId() - 1);
+        model.addAttribute("nextRowId", resumeDesign.getRowId() + 1);
         return "detailDesinger";
     }
 
