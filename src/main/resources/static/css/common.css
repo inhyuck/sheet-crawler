@@ -1,1 +1,24 @@
-tr:hover td { background-color: lightgray; cursor: pointer; }
+tr:hover td { background-color: #fffef2; cursor: pointer; }
+
+table {
+    font-size: 0.9rem;
+}
+
+img {
+    width: 35%;
+}
+
+.container {
+    margin-top: 4rem;
+}
+
+.card {
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.card-header {
+    font-size: 0.9rem;
+}
+
+
