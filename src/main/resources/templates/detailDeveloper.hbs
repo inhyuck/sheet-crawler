@@ -7,89 +7,88 @@
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="/css/detail.css" rel="stylesheet" media="screen">
 </head>
 <body>
 <div class = "container">
-    <b>{{role}} detail</b>
-    <a role="button" href="/list/{{role}}" class="btn btn-secondary btn-sm">목록</a>
+    <h3>{{role}} detail</h3>
+    <nav aria-label="navigation">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="/{{role}}/{{preRowId}}" aria-label="이전 지원자">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="/list/{{role}}">지원자 목록</a></li>
+            <li class="page-item">
+                <a class="page-link" href="/{{role}}/{{nextRowId}}" aria-label="다음 지원자">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
     {{#resumeDevelop}}
-    <table class="table">
-        <tr>
-            <td scope="row"><b>No</b></td>
-            <td><b>time</b></td>
-            <td><b>name</b></td>
-        </tr>
-        <tr>
-            <td>{{rowId}}</td>
-            <td>{{timestamp}}</td>
-            <td>{{name}}</td>
-        </tr>
-        <tr>
-            <td><b>e-mail</b></td>
-            <td><b>phone</b></td>
-            <td><b>job</b></td>
-        </tr>
-        <tr>
-            <td>{{email}}</td>
-            <td>{{phoneNumber}}</td>
-            <td>{{question1}}</td>
-        </tr>
-    </table>
-    <table class="table">
-        <tr>
-            <td><b>2-1. 자신이 가장 자신있는 분야를 선택해주세요.(중복가능)</b></td>
-        </tr>
-        <tr>
-            <td>{{question2}}</td>
-        </tr>
-        <tr>
-            <td><b>2-2. 넥스터즈에서 해보고싶은 분야를 선택해주세요.(중복가능)</b></td>
-        </tr>
-        <tr>
-            <td>{{question2_2}}</td>
-        </tr>
-        <tr>
-            <td><b>3. 넥스터즈에 지원하게 된 계기와 이유는 무엇인가요? (300자 제한)</b></td>
-        </tr>
-        <tr>
-            <td>{{question3}}</td>
-        </tr>
-        <tr>
-            <td><b>4. 자신의 강점 한 가지를 포함하여 자유롭게 자기소개를 해주세요. (300자 제한)</b></td>
-        </tr>
-        <tr>
-            <td>{{question4}}</td>
-        </tr>
-        <tr>
-            <td><b>5. 진행했던 프로젝트 및 개발 경험 중 기억에 남는 한 가지를 자세히 설명해주세요. (500자 제한)</b></td>
-        </tr>
-        <tr>
-            <td>{{question5}}</td>
-        </tr>
-        <tr>
-            <td><b>6. 5번 경험에서 겪었던 기술적인 문제는 무엇이고, 그 문제를 어떻게 해결하였는지 설명해주세요. (500자 제한)</b></td>
-        </tr>
-        <tr>
-            <td>{{question6}}</td>
-        </tr>
-        <tr>
-            <td><b>7. 자신이 주로 사용하는 프로그래밍 언어와, 그 언어를 어느 정도 수준으로 사용하는지 사용경험, 기간을 토대로 적어주세요. (500자 제한)</b></td>
-        </tr>
-        <tr>
-            <td>{{question7}}</td>
-        </tr>
-        <tr>
-            <td><b>8. 개인 포트폴리오, 블로그 사이트나 깃허브 주소가 있다면 적어주세요.</b></td>
-        </tr>
-        <tr>
-            <td>
-            {{urlList.originContents}}
-            {{#each urlList.urlList}}
-                <li><a href="{{this}}" target="_blank">{{this}}</a></li>
-            {{/each}}
-            </td>
-        </tr>
-    </table>
+        <div class="card">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><b>{{name}}</b></li>
+                <li class="list-group-item">{{rowId}}</li>
+                <li class="list-group-item">{{timestamp}}</li>
+                <li class="list-group-item">{{email}}</li>
+                <li class="list-group-item">{{phoneNumber}}</li>
+                <li class="list-group-item">{{question1}}</li>
+                <li class="list-group-item">주분야 : {{question2}}</li>
+                <li class="list-group-item">희망분야 : {{question2_2}}</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h5 class="card-header">3. 넥스터즈에 지원하게 된 계기와 이유는 무엇인가요? (300자 제한)</h5>
+            <div class="card-body">
+                <p class="card-text">{{question3}}</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h5 class="card-header">4. 자신의 강점 한 가지를 포함하여 자유롭게 자기소개를 해주세요. (300자 제한)</h5>
+            <div class="card-body">
+                <p class="card-text">{{question4}}</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h5 class="card-header">5. 진행했던 프로젝트 및 개발 경험 중 기억에 남는 한 가지를 자세히 설명해주세요. (500자 제한)</h5>
+            <div class="card-body">
+                <p class="card-text">{{question5}}</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h5 class="card-header">6. 5번 경험에서 겪었던 기술적인 문제는 무엇이고, 그 문제를 어떻게 해결하였는지 설명해주세요. (500자 제한)</h5>
+            <div class="card-body">
+                <p class="card-text">{{question6}}</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h5 class="card-header">7. 자신이 주로 사용하는 프로그래밍 언어와, 그 언어를 어느 정도 수준으로 사용하는지 사용경험, 기간을 토대로 적어주세요. (500자 제한)</h5>
+            <div class="card-body">
+                <p class="card-text">{{question7}}</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h5 class="card-header">8. 개인 포트폴리오, 블로그 사이트나 깃허브 주소가 있다면 적어주세요.</h5>
+            <div class="card-body">
+                <p class="card-text">
+                    {{urlList.originContents}}
+                    {{#each urlList.urlList}}
+                        <li><a href="{{this}}" target="_blank">{{this}}</a></li>
+                    {{/each}}
+                </p>
+            </div>
+        </div>
     {{/resumeDevelop}}
 </div>
 </body>

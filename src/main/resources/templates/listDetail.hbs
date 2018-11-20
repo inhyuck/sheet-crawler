@@ -12,8 +12,8 @@
 </head>
 <body>
 <div class = "container">
-    <h1>{{role}} Simple List </h1>
-    <a href="/listDetail/{{role}}" class="btn btn-info btn-sm">Detail List</a>
+    <h1>{{role}} Detail List</h1>
+    <a href="/list/{{role}}" class="btn btn-info btn-sm">Simple List</a>
     <table class="table table-horizontal table-bordered">
         <thead class="thead-strong">
         <tr>
@@ -22,6 +22,9 @@
             <th>name</th>
             <th>e-mail</th>
             <th>phone</th>
+            <th>job</th>
+            <th>주분야</th>
+            <th>희망분야</th>
         </tr>
         </thead>
         <tbody id="tbody">
@@ -32,6 +35,9 @@
                 <td>{{name}}</td>
                 <td>{{email}}</td>
                 <td>{{phoneNumber}}</td>
+                <td>{{question1}}</td>
+                <td>{{question2}}</td>
+                <td>{{question2_2}}</td>
             </tr>
         {{/each}}
         </tbody>

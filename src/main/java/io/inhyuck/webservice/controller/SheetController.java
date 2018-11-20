@@ -33,11 +33,21 @@ public class SheetController {
         return "list";
     }
 
+    @GetMapping("/listDetail/{role}")
+    public String findAllDetail(Model model, @PathVariable("role") String role) throws IOException {
+        List<ResumeMini> resumeList = resumeService.findAll(role);
+        model.addAttribute("role", role);
+        model.addAttribute("resumeList", resumeList);
+        return "listDetail";
+    }
+
     @GetMapping("/developer/{rowId}")
     public String findOneDeveloper(Model model, @PathVariable("rowId") String rowId) throws IOException {
         ResumeDevelop resumeDevelop = resumeService.findOneDeveloper(rowId);
         model.addAttribute("role", "developer");
         model.addAttribute("resumeDevelop", resumeDevelop);
+        model.addAttribute("preRowId", resumeDevelop.getRowId() - 1);
+        model.addAttribute("nextRowId", resumeDevelop.getRowId() + 1);
         return "detailDeveloper";
     }
 
@@ -46,6 +56,8 @@ public class SheetController {
         ResumeDesign resumeDesign = resumeService.findOneDesigner(rowId);
         model.addAttribute("role", "designer");
         model.addAttribute("resumeDesign", resumeDesign);
+        model.addAttribute("preRowId", resumeDesign.getRowId() - 1);
+        model.addAttribute("nextRowId", resumeDesign.getRowId() + 1);
         return "detailDesinger";
     }
 
