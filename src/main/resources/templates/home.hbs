@@ -1,34 +1,37 @@
 <!DOCTYPE HTML>
 <head>
-    <title>NEXTERS RECRUIT List</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <title>Menu</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="/css/home.css" rel="stylesheet" media="screen">
 </head>
-<h1>Views TEST</h1>
-
-<a href="/">/</a>
-<br>
-<a href="/list/developer">/list/developer</a>
-<br>
-<a href="/list/designer">/list/designer</a>
-<br>
-<a href="/designer/4">/designer/4</a>
-<br>
-<a href="/developer/9">/developer/9</a>
-
-<!--<div authorize="isAuthenticated()">-->
-    <!--Name: <span authentication="name">SomeName</span><br />-->
-    <!--Principal: <span authentication="principal">PrincipalString</span><br />-->
-    <!--Principal.email: <span authentication="principal.email">Email</span><br />-->
-    <!--HasRole(USER): <span authorize="hasRole('ROLE_USER')">YES</span><br />-->
-    <!--HasRole(ADMIN): <span authorize="hasRole('ROLE_ADMIN')">YES</span>-->
-<!--</div>-->
-<!--<form action="#" action="/logout" method="post">-->
-    <!--<input type="submit" value="Logout" />-->
-<!--</form>-->
-
-{{username}}
-
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title h2">Developer</h5>
+                    <a href="/list/designer">
+                        <img src="/img/cpu.svg" href="/list/developer" class="rounded float-left" alt="SVG image">
+                    <br/>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title h2">Designer</h5>
+                    <a href="/list/designer">
+                        <img src="/img/edit.svg" class="rounded float-right" alt="SVG image">
+                    <br/>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
