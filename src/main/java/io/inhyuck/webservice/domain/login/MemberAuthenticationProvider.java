@@ -42,7 +42,6 @@ public class MemberAuthenticationProvider implements AuthenticationProvider {
 
         ArrayList<SimpleGrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority("ROLE_MEMBER"));
-        System.out.println("1111111" + authorities.toString());
         return new UsernamePasswordAuthenticationToken(member, null, authorities);
     }
 

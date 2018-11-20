@@ -26,7 +26,6 @@ public class MemberController {
 
     @GetMapping("/home")
     public String home() {
-        System.out.println("home controller 호출!");
         return "home";
     }
 

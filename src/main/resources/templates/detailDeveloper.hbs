@@ -82,7 +82,12 @@
             <td><b>8. 개인 포트폴리오, 블로그 사이트나 깃허브 주소가 있다면 적어주세요.</b></td>
         </tr>
         <tr>
-            <td><a href="{{question8}}" target="_blank">{{question8}}</a></td>
+            <td>
+            {{urlList.originContents}}
+            {{#each urlList.urlList}}
+                <li><a href="{{this}}" target="_blank">{{this}}</a></li>
+            {{/each}}
+            </td>
         </tr>
     </table>
     {{/resumeDevelop}}
