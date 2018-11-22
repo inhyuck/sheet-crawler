@@ -5,7 +5,7 @@
 
 package io.inhyuck.webservice.config;
 
-import io.inhyuck.webservice.domain.login.MemberAuthenticationProvider;
+import io.inhyuck.webservice.domain.member.MemberAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

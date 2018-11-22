@@ -18,7 +18,6 @@ public class MemberService {
     MemberDAO memberDAO;
 
     public Member authenticate(String username, String password) throws IOException {
-        Member member = memberDAO.findByUsernameAndPassword(username, password);
-        return member;
+        return memberDAO.findByUsernameAndPassword(username, password);
     }
 }

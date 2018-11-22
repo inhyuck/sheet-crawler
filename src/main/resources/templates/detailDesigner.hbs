@@ -62,33 +62,14 @@
             </ul>
         </div>
 
+        {{#each cardList}}
         <div class="card">
-            <h5 class="card-header">3. 넥스터즈에 지원하는 이유에 대해 설명해주세요.(300자 제한)</h5>
+            <h5 class="card-header">{{questionText}}</h5>
             <div class="card-body">
-                <p class="card-text">{{question3}}</p>
+                <p class="card-text">{{answerText}}</p>
             </div>
         </div>
-
-        <div class="card">
-            <h5 class="card-header">4. 자신의 강점 한 가지를 포함해 자유롭게 자기소개를 해주세요. (300자 제한)</h5>
-            <div class="card-body">
-                <p class="card-text">{{question4}}</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <h5 class="card-header">5. 팀으로 작업하며 문제에 부딪힌 경험과 그 갈등을 어떻게 해결했는지 설명해주세요. (500자 제한)</h5>
-            <div class="card-body">
-                <p class="card-text">{{question5}}</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <h5 class="card-header">6. 자신의 주요 분야와 관련된 대표적인 프로젝트 경험을 적어주세요. (500자 제한)</h5>
-            <div class="card-body">
-                <p class="card-text">{{question6}}</p>
-            </div>
-        </div>
+        {{/each}}
 
         <div class="card">
             <h5 class="card-header">7. 개인 포트폴리오를 첨부해주세요. (최대 20MB제한 / PDF로 제출)</h5>
@@ -99,6 +80,15 @@
             </div>
         </div>
     {{/resumeDesign}}
+
+    <nav>
+        <ul class="pagination">
+            {{#if preRowId}}<li class="page-item"><a class="page-link" href="/{{role}}/{{preRowId}}">Previous</a></li>{{/if}}
+                            <li class="page-item"><a class="page-link" href="/list/{{role}}">List</a></li>
+            {{#if nextRowId}}<li class="page-item"><a class="page-link" href="/{{role}}/{{nextRowId}}">Next</a></li>{{/if}}
+        </ul>
+    </nav>
+
 </div>
 </body>
 {{/designerResumeResponseDto}}
