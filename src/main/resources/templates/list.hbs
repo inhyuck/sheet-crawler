@@ -41,20 +41,24 @@
         <thead class="thead-strong">
         <tr>
             <th>No</th>
-            <th>time</th>
             <th>name</th>
             <th>e-mail</th>
             <th>phone</th>
+            <th class="answerA">A</th>
+            <th class="answerB">B</th>
+            <th class="answerC">C</th>
         </tr>
         </thead>
         <tbody id="tbody">
         {{#each resumeList}}
             <tr data-url="/{{role}}/{{rowId}}">
-                <td>{{rowId}}</td>
-                <td>{{timestamp}}</td>
-                <td>{{name}}</td>
+                <td class="rowId">{{rowId}}</td>
+                <td class="name">{{name}}</td>
                 <td>{{email}}</td>
-                <td>{{phoneNumber}}</td>
+                <td class="phoneNumber">{{phoneNumber}}</td>
+                <td {{#if answerA}} class="answerA" {{/if}}></td>
+                <td {{#if answerB}} class="answerB" {{/if}}></td>
+                <td {{#if answerC}} class="answerC" {{/if}}></td>
             </tr>
         {{/each}}
         </tbody>

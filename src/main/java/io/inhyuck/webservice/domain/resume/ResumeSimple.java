@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class ResumeMini {
+public class ResumeSimple {
     private String rowId;
     private String timestamp;
     private String name;

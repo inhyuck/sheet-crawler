@@ -6,8 +6,8 @@ package io.inhyuck.webservice.controller;
 
 import io.inhyuck.webservice.domain.resume.ResumeDesign;
 import io.inhyuck.webservice.domain.resume.ResumeDevelop;
-import io.inhyuck.webservice.domain.resume.ResumeMini;
-import io.inhyuck.webservice.service.sheet.ResumeService;
+import io.inhyuck.webservice.domain.resume.ResumeSimple;
+import io.inhyuck.webservice.service.ResumeService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +27,7 @@ public class SheetController {
 
     @GetMapping("/list/{role}")
     public String findAll(Model model, @PathVariable("role") String role) throws IOException {
-        List<ResumeMini> resumeList = resumeService.findAll(role);
+        List<ResumeSimple> resumeList = resumeService.findAll(role);
         model.addAttribute("role", role);
         model.addAttribute("resumeList", resumeList);
         return "list";
@@ -35,7 +35,7 @@ public class SheetController {
 
     @GetMapping("/listDetail/{role}")
     public String findAllDetail(Model model, @PathVariable("role") String role) throws IOException {
-        List<ResumeMini> resumeList = resumeService.findAll(role);
+        List<ResumeSimple> resumeList = resumeService.findAll(role);
         model.addAttribute("role", role);
         model.addAttribute("resumeList", resumeList);
         return "listDetail";

@@ -1,49 +1,48 @@
-/**
- * Date: 13/11/2018
- * Author: inhyuck | https://github.com/inhyuck
- * Solution URL: https://github.com/inhyuck/algorithm
- * Title:
- * Problem:
- * URL: https://www.acmicpc.net/problem/
- */
-
-package io.inhyuck.webservice.service.sheet;
+package io.inhyuck.webservice.dao;
 
 import io.inhyuck.webservice.config.MySheetProperties;
 import io.inhyuck.webservice.domain.resume.ResumeDesign;
 import io.inhyuck.webservice.domain.resume.ResumeDevelop;
-import io.inhyuck.webservice.domain.resume.ResumeMini;
+import io.inhyuck.webservice.domain.resume.ResumeSimple;
 import io.inhyuck.webservice.domain.resume.UrlList;
+import io.inhyuck.webservice.dao.sheet.SheetAPI;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
-public class ResumeService {
+@Repository
+public class ResumeDAO {
     static final String DEVELOPER = "developer";
     static final String DESIGNER = "designer";
 
     @Autowired
-    MySheetProperties sheetProperties;
+    private MySheetProperties sheetProperties;
     @Autowired
-    SheetAPI sheetAPI;
+    private SheetAPI sheetAPI;
 
-    public List<ResumeMini> findAll(String role) throws IOException {
+    public List<ResumeSimple> findAll(String role) throws IOException {
         List<List<Object>> values = null;
+        String range;
         if (role.equals(DEVELOPER)) {
-            values = sheetAPI.findAll(sheetProperties.getDeveloper());
+            range = getRange(sheetProperties.getDeveloperSheetName()
+                    , sheetProperties.getStartLow()
+                    , sheetProperties.getLastLow());
+            values = sheetAPI.getValues(sheetProperties.getDeveloperSheetId(), range).getValues();
         } else if (role.equals(DESIGNER)){
-            values = sheetAPI.findAll(sheetProperties.getDesigner());
+            range = getRange(sheetProperties.getDesignerSheetName()
+                    , sheetProperties.getStartLow()
+                    , sheetProperties.getLastLow());
+            values = sheetAPI.getValues(sheetProperties.getDesignerSheetId(), range).getValues();
         }
 
-        List<ResumeMini> resumeList = new ArrayList<>();
-        ResumeMini resumeMini;
+        List<ResumeSimple> resumeList = new ArrayList<>();
+        ResumeSimple resumeSimple;
         int rowId = 2;
         for (List<Object> value : values) {
-            resumeMini = ResumeMini.builder()
+            resumeSimple = ResumeSimple.builder()
                     .rowId(String.valueOf(rowId++))
                     .timestamp(value.get(0).toString())
                     .name(value.get(1).toString())
@@ -53,13 +52,14 @@ public class ResumeService {
                     .question2(value.get(5).toString())
                     .question2_2(value.get(6).toString())
                     .build();
-            resumeList.add(resumeMini);
+            resumeList.add(resumeSimple);
         }
         return resumeList;
     }
 
     public ResumeDesign findOneDesigner(String rowId) throws IOException {
-        List<Object> values = sheetAPI.findOne(sheetProperties.getDesigner(), rowId);
+        List<Object> values = sheetAPI.getValues(sheetProperties.getDesignerSheetId()
+                , getRange(sheetProperties.getDesignerSheetName(), rowId, rowId)).getValues().get(0);
         return ResumeDesign.builder()
                 .rowId(Long.parseLong(rowId))
                 .timestamp(values.get(0).toString())
@@ -78,7 +78,8 @@ public class ResumeService {
     }
 
     public ResumeDevelop findOneDeveloper(String rowId) throws IOException {
-        List<Object> values = sheetAPI.findOne(sheetProperties.getDeveloper(), rowId);
+        List<Object> values = sheetAPI.getValues(sheetProperties.getDeveloperSheetId()
+                , getRange(sheetProperties.getDeveloperSheetName(), rowId, rowId)).getValues().get(0);
         return ResumeDevelop.builder()
                 .rowId(Long.parseLong(rowId))
                 .timestamp(values.get(0).toString())
@@ -95,5 +96,15 @@ public class ResumeService {
                 .question7(values.get(11).toString())
                 .urlList((values.size() == 13) ? new UrlList(values.get(12).toString()) : new UrlList("무응답"))
                 .build();
+    }
+
+    public String getRange(String sheetName, String startRow, String lastRow) {
+        return new StringBuilder()
+                .append(sheetName)
+                .append("!")
+                .append(startRow)
+                .append(":")
+                .append(lastRow)
+                .toString();
     }
 }
