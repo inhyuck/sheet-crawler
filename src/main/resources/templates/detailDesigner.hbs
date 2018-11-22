@@ -99,6 +99,15 @@
             </div>
         </div>
     {{/resumeDesign}}
+
+    <nav>
+        <ul class="pagination">
+            {{#if preRowId}}<li class="page-item"><a class="page-link" href="/{{role}}/{{preRowId}}">Previous</a></li>{{/if}}
+                            <li class="page-item"><a class="page-link" href="/list/{{role}}">List</a></li>
+            {{#if nextRowId}}<li class="page-item"><a class="page-link" href="/{{role}}/{{nextRowId}}">Next</a></li>{{/if}}
+        </ul>
+    </nav>
+
 </div>
 </body>
 {{/designerResumeResponseDto}}
