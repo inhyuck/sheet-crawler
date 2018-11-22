@@ -1,7 +1,9 @@
 package io.inhyuck.webservice.service;
 
+import io.inhyuck.webservice.component.CardComponent;
 import io.inhyuck.webservice.config.MySheetProperties;
 import io.inhyuck.webservice.dao.ResumeDAO;
+import io.inhyuck.webservice.domain.resume.Card;
 import io.inhyuck.webservice.domain.resume.ResumeDesign;
 import io.inhyuck.webservice.domain.resume.ResumeDevelop;
 import io.inhyuck.webservice.dto.DesignerResumeResponseDto;
@@ -11,11 +13,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class ResumeService {
     @Autowired
     MySheetProperties sheetProperties;
+    @Autowired
+    CardComponent cardComponent;
     @Autowired
     ResumeDAO resumeDAO;
 
@@ -31,8 +36,10 @@ public class ResumeService {
 
     public DeveloperResumeResponseDto findOneDeveloper(String rowId) throws IOException {
         ResumeDevelop resumeDevelop = resumeDAO.findOneDeveloper(rowId);
+        List<Card> cardList = cardComponent.getDevelopCardList(resumeDevelop);
         return DeveloperResumeResponseDto.builder()
                 .resumeDevelop(resumeDevelop)
+                .cardList(cardList)
                 .role(DEVELOPER)
                 .rowId(rowId)
                 .preRowId((rowId.equals("2")) ? "" : String.valueOf(Integer.parseInt(rowId) - 1))
@@ -42,8 +49,10 @@ public class ResumeService {
 
     public DesignerResumeResponseDto findOneDesigner(String rowId) throws IOException {
         ResumeDesign resumeDesign = resumeDAO.findOneDesigner(rowId);
+        List<Card> cardList = cardComponent.getDesignerCardList(resumeDesign);
         return DesignerResumeResponseDto.builder()
                 .resumeDesign(resumeDesign)
+                .cardList(cardList)
                 .role(DESIGNER)
                 .rowId(rowId)
                 .preRowId((rowId.equals("2")) ? "" : String.valueOf(Integer.parseInt(rowId) - 1))
