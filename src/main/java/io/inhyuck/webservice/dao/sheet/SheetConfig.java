@@ -1,4 +1,4 @@
-package io.inhyuck.webservice.service.sheet;
+package io.inhyuck.webservice.dao.sheet;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
@@ -8,20 +8,19 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.SheetsScopes;
-import com.google.api.services.sheets.v4.model.ValueRange;
 import io.inhyuck.webservice.config.MySheetProperties;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 
-@Service
-public class SheetAPI {
+@Component
+public class SheetConfig {
     @Autowired
-    MySheetProperties sheetProperties;
+    private MySheetProperties sheetProperties;
 
     /**
      * OAUTH 2.0 연동시 지정한 OAuth 2.0 클라이언트 이름
@@ -58,15 +57,16 @@ public class SheetAPI {
         }
     }
 
+
     /**
      * Service Account용 credentail
      * @return Credential object.
      * @throws IOException
      */
-    public static Credential getServiceAccountAuthorize() throws IOException {
+    public Credential getServiceAccountAuthorize() throws IOException {
 
         InputStream in =
-                SheetAPI.class.getResourceAsStream("/recruit-service.json");
+                SheetAPI.class.getResourceAsStream(sheetProperties.getJsonLocation());
         Credential credential = GoogleCredential.fromStream(in)
                 .createScoped(SCOPES);
         return credential;
@@ -77,31 +77,11 @@ public class SheetAPI {
      * @return 인증이 통과된 Sheets API client service
      * @throws IOException
      */
-    public static Sheets getSheetsService() throws IOException {
+    public Sheets getSheetsService() throws IOException {
         Credential credential = getServiceAccountAuthorize();
         return new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, credential)
                 .setApplicationName(APPLICATION_NAME)
                 .build();
-    }
-
-    public List<List<Object>> findAll(String spreadsheetId) throws IOException {
-        Sheets service = getSheetsService();
-        String range = sheetProperties.getSheetName()+ "!" + sheetProperties.getStartLow() + ":" + sheetProperties.getLastLow();
-        ValueRange response = service.spreadsheets().values()
-                .get(spreadsheetId, range)
-                .execute();
-        List<List<Object>> values = response.getValues();
-        return values;
-    }
-
-    public List<Object> findOne(String spreadsheetId, String rowId) throws IOException {
-        Sheets service = getSheetsService();
-        String range = sheetProperties.getSheetName()+ "!" + rowId + ":" + rowId;
-        ValueRange response = service.spreadsheets().values()
-                .get(spreadsheetId, range)
-                .execute();
-        List<List<Object>> values = response.getValues();
-        return values.get(0);
     }
 
 }

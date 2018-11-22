@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class ResumeMini {
+public class ResumeSimple {
     private String rowId;
     private String timestamp;
     private String name;
@@ -14,4 +14,8 @@ public class ResumeMini {
     private String question1;
     private String question2;
     private String question2_2;
+    private String lastRowNumber;
+    private String checkA;
+    private String checkB;
+    private String checkC;
 }

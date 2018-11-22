@@ -19,4 +19,8 @@ public class ResumeDesign {
     private String question5;
     private String question6;
     private String portfolioLink;
+    private String lastRowNumber;
+    private String checkA;
+    private String checkB;
+    private String checkC;
 }

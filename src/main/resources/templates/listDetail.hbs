@@ -1,47 +1,73 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>{{role}} List Detail</title>
+    <title>{{resumeListResponseDto.role}} List</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/common.css">
     <script src="/js/common.js"></script>
 </head>
 <body>
-<div class = "container">
-    <h1>{{role}} Detail List</h1>
-    <a href="/list/{{role}}" class="btn btn-info btn-sm">Simple List</a>
-    <table class="table table-horizontal table-bordered">
-        <thead class="thead-strong">
-        <tr>
-            <th>No</th>
-            <th>time</th>
-            <th>name</th>
-            <th>e-mail</th>
-            <th>phone</th>
-            <th>job</th>
-            <th>주분야</th>
-            <th>희망분야</th>
-        </tr>
-        </thead>
-        <tbody id="tbody">
-        {{#each resumeList}}
-            <tr data-url="/{{role}}/{{rowId}}">
-                <td>{{rowId}}</td>
-                <td>{{timestamp}}</td>
-                <td>{{name}}</td>
-                <td>{{email}}</td>
-                <td>{{phoneNumber}}</td>
-                <td>{{question1}}</td>
-                <td>{{question2}}</td>
-                <td>{{question2_2}}</td>
+<nav class="navbar fixed-top navbar-dark bg-dark navbar-expand-sm">
+    <a class="navbar-brand" href="/home">NEXTERS 14th</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a href="/logout" class="btn btn-secondary my-2 my-sm-0" type="button">Logout</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/list/developer">Developer</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/list/designer">Designer</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+{{#resumeListResponseDto}}
+    <div class = "container">
+        <a href="/list/{{role}}" class="btn btn-info btn-sm">Simple List</a>
+        <table class="table table-horizontal table-bordered">
+            <thead class="thead-strong">
+            <tr>
+                <th>No</th>
+                <th>name</th>
+                <th>e-mail</th>
+                <th>phone</th>
+                <th>job</th>
+                <th>major</th>
+                <th class="checkA">-</th>
+                <th class="checkB">-</th>
+                <th class="checkC">-</th>
             </tr>
-        {{/each}}
-        </tbody>
-    </table>
-</div>
+            </thead>
+            <tbody id="tbody">
+            {{#each resumeSimpleList}}
+                <tr data-url="/{{role}}/{{rowId}}">
+                    <td class="rowId">{{rowId}}</td>
+                    <td class="name">{{name}}</td>
+                    <td class="email">{{email}}</td>
+                    <td class="phoneNumber">{{phoneNumber}}</td>
+                    <td>{{question1}}</td>
+                    <td>{{question2}}</td>
+                    <td {{#if checkA}} class="checkA"> {{checkA}} {{else}} > {{/if}}</td>
+                    <td {{#if checkB}} class="checkB"> {{checkB}} {{else}} > {{/if}}</td>
+                    <td {{#if checkC}} class="checkC"> {{checkC}} {{else}} > {{/if}}</td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+{{/resumeListResponseDto}}
 </body>
 </html>
