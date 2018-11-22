@@ -51,54 +51,72 @@ public class ResumeDAO {
                     .question1(value.get(4).toString())
                     .question2(value.get(5).toString())
                     .question2_2(value.get(6).toString())
+                    .checkA(getCheckValue(value.get(value.size() - 3).toString(), role.equals(DEVELOPER) ? "cto" : ""))
+                    .checkB(getCheckValue(value.get(value.size() - 2).toString(), role.equals(DEVELOPER) ? "coo" : "ceo"))
+                    .checkC(getCheckValue(value.get(value.size() - 1).toString(), role.equals(DEVELOPER) ? "cmo" : "cdo"))
                     .build();
             resumeList.add(resumeSimple);
         }
         return resumeList;
     }
 
-    public ResumeDesign findOneDesigner(String rowId) throws IOException {
-        List<Object> values = sheetAPI.getValues(sheetProperties.getDesignerSheetId()
-                , getRange(sheetProperties.getDesignerSheetName(), rowId, rowId)).getValues().get(0);
-        return ResumeDesign.builder()
-                .rowId(Long.parseLong(rowId))
-                .timestamp(values.get(0).toString())
-                .name(values.get(1).toString())
-                .email(values.get(2).toString())
-                .phoneNumber(values.get(3).toString())
-                .question1(values.get(4).toString())
-                .question2(values.get(5).toString())
-                .question2_2(values.get(6).toString())
-                .question3(values.get(7).toString())
-                .question4(values.get(8).toString())
-                .question5(values.get(9).toString())
-                .question6(values.get(10).toString())
-                .portfolioLink(values.get(11).toString())
-                .build();
-    }
-
     public ResumeDevelop findOneDeveloper(String rowId) throws IOException {
-        List<Object> values = sheetAPI.getValues(sheetProperties.getDeveloperSheetId()
-                , getRange(sheetProperties.getDeveloperSheetName(), rowId, rowId)).getValues().get(0);
+        List<List<Object>> values = sheetAPI.getValues(sheetProperties.getDeveloperSheetId()
+                , getRange(sheetProperties.getDeveloperSheetName(), sheetProperties.getStartLow(), sheetProperties.getLastLow())).getValues();
+        String lastRowNumber = String.valueOf(values.size() + 1);
+        List<Object> value = values.get(Integer.parseInt(rowId) - 2);
+        if (value.size() < 16) {
+            value.add(12, "No answer!");
+        }
         return ResumeDevelop.builder()
                 .rowId(Long.parseLong(rowId))
-                .timestamp(values.get(0).toString())
-                .name(values.get(1).toString())
-                .email(values.get(2).toString())
-                .phoneNumber((values.get(3).toString()))
-                .question1(values.get(4).toString())
-                .question2(values.get(5).toString())
-                .question2_2(values.get(6).toString())
-                .question3(values.get(7).toString())
-                .question4(values.get(8).toString())
-                .question5(values.get(9).toString())
-                .question6(values.get(10).toString())
-                .question7(values.get(11).toString())
-                .urlList((values.size() == 13) ? new UrlList(values.get(12).toString()) : new UrlList("무응답"))
+                .timestamp(value.get(0).toString())
+                .name(value.get(1).toString())
+                .email(value.get(2).toString())
+                .phoneNumber((value.get(3).toString()))
+                .question1(value.get(4).toString())
+                .question2(value.get(5).toString())
+                .question2_2(value.get(6).toString())
+                .question3(value.get(7).toString())
+                .question4(value.get(8).toString())
+                .question5(value.get(9).toString())
+                .question6(value.get(10).toString())
+                .question7(value.get(11).toString())
+                .urlList(new UrlList(value.get(12).toString()))
+                .lastRowNumber(lastRowNumber)
+                .checkA(getCheckValue(value.get(value.size() - 3).toString(), "cto"))
+                .checkB(getCheckValue(value.get(value.size() - 2).toString(), "coo"))
+                .checkC(getCheckValue(value.get(value.size() - 1).toString(), "cmo"))
                 .build();
     }
 
-    public String getRange(String sheetName, String startRow, String lastRow) {
+    public ResumeDesign findOneDesigner(String rowId) throws IOException {
+        List<List<Object>> values = sheetAPI.getValues(sheetProperties.getDesignerSheetId()
+                , getRange(sheetProperties.getDesignerSheetName(), sheetProperties.getStartLow(), sheetProperties.getLastLow())).getValues();
+        String lastRowNumber = String.valueOf(values.size() + 1);
+        List<Object> value = values.get(Integer.parseInt(rowId) - 2);
+        return ResumeDesign.builder()
+                .rowId(Long.parseLong(rowId))
+                .timestamp(value.get(0).toString())
+                .name(value.get(1).toString())
+                .email(value.get(2).toString())
+                .phoneNumber(value.get(3).toString())
+                .question1(value.get(4).toString())
+                .question2(value.get(5).toString())
+                .question2_2(value.get(6).toString())
+                .question3(value.get(7).toString())
+                .question4(value.get(8).toString())
+                .question5(value.get(9).toString())
+                .question6(value.get(10).toString())
+                .portfolioLink(value.get(11).toString())
+                .lastRowNumber(lastRowNumber)
+                .checkA(getCheckValue(value.get(value.size() - 3).toString(), ""))
+                .checkB(getCheckValue(value.get(value.size() - 2).toString(), "ceo"))
+                .checkC(getCheckValue(value.get(value.size() - 1).toString(), "cdo"))
+                .build();
+    }
+
+    private String getRange(String sheetName, String startRow, String lastRow) {
         return new StringBuilder()
                 .append(sheetName)
                 .append("!")
@@ -106,5 +124,10 @@ public class ResumeDAO {
                 .append(":")
                 .append(lastRow)
                 .toString();
+    }
+
+    private String getCheckValue(String originValue, String checkName) {
+        String checkValue = originValue.equals("완료") ? checkName : "";
+        return checkValue;
     }
 }

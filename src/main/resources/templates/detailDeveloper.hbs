@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html>
+{{#developerResumeResponseDto}}
 <head>
     <title>{{role}} Detail</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -20,7 +21,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a href="/logout" class="btn btn-outline-secondary my-2 my-sm-0" type="button">Logout</a>
+                <a href="/logout" class="btn btn-secondary my-2 my-sm-0" type="button">Logout</a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
@@ -31,12 +32,16 @@
             <li class="nav-item">
                 <a class="nav-link" href="/list/designer">Designer</a>
             </li>
+            {{#if preRowId}}
             <li class="nav-item">
                 <a class="nav-link" href="/{{role}}/{{preRowId}}">&laquo;&laquo;</a>
             </li>
+            {{/if}}
+            {{#if nextRowId}}
             <li class="nav-item">
                 <a class="nav-link" href="/{{role}}/{{nextRowId}}">&raquo;&raquo;</a>
             </li>
+            {{/if}}
         </ul>
     </div>
 </nav>
@@ -53,6 +58,7 @@
                 <li class="list-group-item">{{question1}}</li>
                 <li class="list-group-item">주분야 : {{question2}}</li>
                 <li class="list-group-item">희망분야 : {{question2_2}}</li>
+                <li class="list-group-item">평가여부 : {{checkA}} , {{checkB}} , {{checkC}}</li>
             </ul>
         </div>
 
@@ -105,4 +111,5 @@
     {{/resumeDevelop}}
 </div>
 </body>
+{{/developerResumeResponseDto}}
 </html>

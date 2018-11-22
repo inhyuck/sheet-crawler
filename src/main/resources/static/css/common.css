@@ -41,13 +41,21 @@ th {
     text-align: center;
 }
 
-.answerA {
-    background: #d8e7ff;
+.checkA {
+    background: #dcf9f5;
+    text-align: center;
 }
-.answerB {
+.checkB {
     background: #effced;
+    text-align: center;
 }
-.answerC {
-    background: #fff6f2;
+.checkC {
+    background: #e1d7ff;
+    text-align: center;
+}
+
+/*Navbar*/
+.btn-secondary {
+    background-color: #343a40;
 }
 

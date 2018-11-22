@@ -20,4 +20,8 @@ public class ResumeDevelop {
     private String question6;
     private String question7;
     private UrlList urlList;
+    private String lastRowNumber;
+    private String checkA;
+    private String checkB;
+    private String checkC;
 }
