@@ -4,10 +4,10 @@
 
 package io.inhyuck.webservice.controller;
 
-import io.inhyuck.webservice.domain.resume.ResumeDesign;
-import io.inhyuck.webservice.domain.resume.ResumeDevelop;
-import io.inhyuck.webservice.domain.resume.ResumeMini;
-import io.inhyuck.webservice.service.sheet.ResumeService;
+import io.inhyuck.webservice.dto.DesignerResumeResponseDto;
+import io.inhyuck.webservice.dto.DeveloperResumeResponseDto;
+import io.inhyuck.webservice.dto.ResumeListResponseDto;
+import io.inhyuck.webservice.service.ResumeService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.io.IOException;
-import java.util.List;
 
 @Controller
 @AllArgsConstructor
@@ -27,38 +26,30 @@ public class SheetController {
 
     @GetMapping("/list/{role}")
     public String findAll(Model model, @PathVariable("role") String role) throws IOException {
-        List<ResumeMini> resumeList = resumeService.findAll(role);
-        model.addAttribute("role", role);
-        model.addAttribute("resumeList", resumeList);
+        ResumeListResponseDto resumeListResponseDto = resumeService.findAll(role);
+        model.addAttribute("resumeListResponseDto", resumeListResponseDto);
         return "list";
     }
 
     @GetMapping("/listDetail/{role}")
     public String findAllDetail(Model model, @PathVariable("role") String role) throws IOException {
-        List<ResumeMini> resumeList = resumeService.findAll(role);
-        model.addAttribute("role", role);
-        model.addAttribute("resumeList", resumeList);
+        ResumeListResponseDto resumeListResponseDto = resumeService.findAll(role);
+        model.addAttribute("resumeListResponseDto", resumeListResponseDto);
         return "listDetail";
     }
 
     @GetMapping("/developer/{rowId}")
     public String findOneDeveloper(Model model, @PathVariable("rowId") String rowId) throws IOException {
-        ResumeDevelop resumeDevelop = resumeService.findOneDeveloper(rowId);
-        model.addAttribute("role", "developer");
-        model.addAttribute("resumeDevelop", resumeDevelop);
-        model.addAttribute("preRowId", resumeDevelop.getRowId() - 1);
-        model.addAttribute("nextRowId", resumeDevelop.getRowId() + 1);
+        DeveloperResumeResponseDto developerResumeResponseDto= resumeService.findOneDeveloper(rowId);
+        model.addAttribute("developerResumeResponseDto", developerResumeResponseDto);
         return "detailDeveloper";
     }
 
     @GetMapping("/designer/{rowId}")
     public String findOneDesigner(Model model, @PathVariable("rowId") String rowId)  throws IOException {
-        ResumeDesign resumeDesign = resumeService.findOneDesigner(rowId);
-        model.addAttribute("role", "designer");
-        model.addAttribute("resumeDesign", resumeDesign);
-        model.addAttribute("preRowId", resumeDesign.getRowId() - 1);
-        model.addAttribute("nextRowId", resumeDesign.getRowId() + 1);
-        return "detailDesinger";
+        DesignerResumeResponseDto designerResumeResponseDto= resumeService.findOneDesigner(rowId);
+        model.addAttribute("designerResumeResponseDto", designerResumeResponseDto);
+        return "detailDesigner";
     }
 
 }

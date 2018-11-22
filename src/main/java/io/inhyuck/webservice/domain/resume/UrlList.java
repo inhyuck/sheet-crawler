@@ -1,6 +1,5 @@
 package io.inhyuck.webservice.domain.resume;
 
-import lombok.Builder;
 import lombok.Data;
 
 import java.util.ArrayList;
