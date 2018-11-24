@@ -1,20 +1,22 @@
-# Sheet Crawler
+# 📊 Sheet Crawler
 
-**‘Google Form 으로 설문조사는 쉽게 받았지만 Spread Sheet로 보기가 너무 불편하다?!**
- 여러 단체에서 설문조사를 Google Form을 이용합니다. 조사자의 취향에 맞게 구현할 수 있고 링크로 공유하기 편리하기 때문입니다. 그러나 응답내용이 Google Spread Sheet에 한줄한줄 쌓이기 때문에 한눈에 데이터를 파악하기는 어렵습니다.
-
-
-
-**‘Sheet Crawler를 이용하여 응답내용을 편리하게 확인!’** 
-
- 편리하게 설문을 받았지만 응답내용을 관리하기는 쉽지 않습니다. 한눈에 파악하려면 데이터 정제 작업은 물론, 어려운 액셀 함수까지 ㅠㅠ 하지만 `Sheet Crawler`를 이용하면 Database 구축 필요없이! Google Spread Sheet 문서만으로 응답정보는 물론 해당 데이터에 접근 가능한 유저 관리까지 가능합니다.
+**Google Form 으로 설문조사는 쉽게 받았지만 Spread Sheet로 보기가 너무 불편하다?!**
+ 
+ 여러 단체에서 Google Form을 이용하여 설문을 합니다. 조사자의 취향에 맞게 구현할 수 있고 링크로 공유하기 편리하기 때문입니다. 그러나 응답내용의 종류와 상관없이 Google Spread Sheet에 한줄한줄 쌓이기 때문에 한눈에 데이터를 파악하기가 어렵습니다.
 
 
 
-**‘Version 1. NEXTERS 14th Recruiting’** 
-Sheet Crawler를 적용한 첫번째 프로젝트입니다 :)
+**Sheet Crawler를 이용하여 응답내용을 편리하게 확인** 
 
-디자이너와 개발자를 위한 IT 연합동아리 NEXTERS 14th Recruiting에 `Sheet Crawler ` 를 사용하여 편리한 평가환경 구축
+ 편리하게 설문을 받았지만 응답내용을 관리하기는 쉽지 않습니다. 한눈에 파악하려면 데이터 정제 작업은 물론, 어려운 액셀 함수까지 ㅠㅠ 하지만 `Sheet Crawler`를 이용하면 Database 구축도 필요없이! Google Spread Sheet 문서 하나만으로 응답정보는 물론 해당 데이터에 접근 가능한 유저까지 관리할 수 있습니다.
+
+
+
+**Version 1. NEXTERS 14th Recruiting** 
+
+ Sheet Crawler를 적용한 첫번째 프로젝트입니다 :)
+
+디자이너와 개발자를 위한 IT 연합동아리 NEXTERS 14th Recruiting에 `Sheet Crawler` 를 사용하여 편리한 평가환경을 구축하였습니다.
 
 - **로그인** | 평가담당 운영진만 접근할 수 있도록 Spring Security를 통해 로그인기능 구현 
 - **개발자, 디자이너 지원자 목록 조회** | 기본 정보(이름, 이메일, 전화번호) 를 전체 리스트를 통해 한눈에 파악할 수 있도록 구현
