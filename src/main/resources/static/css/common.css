@@ -16,6 +16,10 @@ img {
     font-size: 0.9rem;
 }
 
+.card-body {
+    white-space: pre-line;
+}
+
 /*List*/
 tr:hover td { background-color: #fffef2; cursor: pointer; }
 
