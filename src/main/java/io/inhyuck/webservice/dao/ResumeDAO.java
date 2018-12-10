@@ -1,10 +1,10 @@
 package io.inhyuck.webservice.dao;
 
 import io.inhyuck.webservice.config.MySheetProperties;
-import io.inhyuck.webservice.domain.resume.ResumeDesign;
-import io.inhyuck.webservice.domain.resume.ResumeDevelop;
-import io.inhyuck.webservice.domain.resume.ResumeSimple;
-import io.inhyuck.webservice.domain.resume.UrlList;
+import io.inhyuck.webservice.entity.resume.ResumeDesign;
+import io.inhyuck.webservice.entity.resume.ResumeDevelop;
+import io.inhyuck.webservice.entity.resume.ResumeSimple;
+import io.inhyuck.webservice.entity.resume.UrlList;
 import io.inhyuck.webservice.dao.sheet.SheetAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -51,9 +51,9 @@ public class ResumeDAO {
                     .question1(value.get(4).toString())
                     .question2(value.get(5).toString())
                     .question2_2(value.get(6).toString())
-                    .checkA(getCheckValue(value.get(value.size() - 3).toString(), role.equals(DEVELOPER) ? "cto" : ""))
-                    .checkB(getCheckValue(value.get(value.size() - 2).toString(), role.equals(DEVELOPER) ? "coo" : "ceo"))
-                    .checkC(getCheckValue(value.get(value.size() - 1).toString(), role.equals(DEVELOPER) ? "cmo" : "cdo"))
+                    .checkA(getCheckValue(value.get(value.size() - 4).toString(), role.equals(DEVELOPER) ? "cto" : ""))
+                    .checkB(getCheckValue(value.get(value.size() - 3).toString(), role.equals(DEVELOPER) ? "coo" : "ceo"))
+                    .checkC(getCheckValue(value.get(value.size() - 2).toString(), role.equals(DEVELOPER) ? "cmo" : "cdo"))
                     .build();
             resumeList.add(resumeSimple);
         }
@@ -84,9 +84,9 @@ public class ResumeDAO {
                 .question7(value.get(11).toString())
                 .urlList(new UrlList(value.get(12).toString()))
                 .lastRowNumber(lastRowNumber)
-                .checkA(getCheckValue(value.get(value.size() - 3).toString(), "cto"))
-                .checkB(getCheckValue(value.get(value.size() - 2).toString(), "coo"))
-                .checkC(getCheckValue(value.get(value.size() - 1).toString(), "cmo"))
+                .checkA(getCheckValue(value.get(value.size() - 4).toString(), "cto"))
+                .checkB(getCheckValue(value.get(value.size() - 3).toString(), "coo"))
+                .checkC(getCheckValue(value.get(value.size() - 2).toString(), "cmo"))
                 .build();
     }
 
@@ -110,9 +110,9 @@ public class ResumeDAO {
                 .question6(value.get(10).toString())
                 .portfolioLink(value.get(11).toString())
                 .lastRowNumber(lastRowNumber)
-                .checkA(getCheckValue(value.get(value.size() - 3).toString(), ""))
-                .checkB(getCheckValue(value.get(value.size() - 2).toString(), "ceo"))
-                .checkC(getCheckValue(value.get(value.size() - 1).toString(), "cdo"))
+                .checkA(getCheckValue(value.get(value.size() - 4).toString(), ""))
+                .checkB(getCheckValue(value.get(value.size() - 3).toString(), "ceo"))
+                .checkC(getCheckValue(value.get(value.size() - 2).toString(), "cdo"))
                 .build();
     }
 

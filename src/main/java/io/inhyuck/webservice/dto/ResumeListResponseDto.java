@@ -1,6 +1,6 @@
 package io.inhyuck.webservice.dto;
 
-import io.inhyuck.webservice.domain.resume.ResumeSimple;
+import io.inhyuck.webservice.entity.resume.ResumeSimple;
 import lombok.Builder;
 import lombok.Data;
 

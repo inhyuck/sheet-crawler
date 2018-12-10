@@ -1,7 +1,6 @@
 package io.inhyuck.webservice.dto;
 
-import io.inhyuck.webservice.domain.resume.Card;
-import io.inhyuck.webservice.domain.resume.ResumeDesign;
+import io.inhyuck.webservice.entity.resume.ResumeDesign;
 import lombok.Builder;
 import lombok.Data;
 
