@@ -50,6 +50,7 @@
                 <th class="checkA">-</th>
                 <th class="checkB">-</th>
                 <th class="checkC">-</th>
+                <th>서류합격</th>
             </tr>
             </thead>
             <tbody id="tbody">
@@ -65,6 +66,7 @@
                     <td {{#if checkA}} class="checkA"> {{checkA}} {{else}} > {{/if}}</td>
                     <td {{#if checkB}} class="checkB"> {{checkB}} {{else}} > {{/if}}</td>
                     <td {{#if checkC}} class="checkC"> {{checkC}} {{else}} > {{/if}}</td>
+                    <td class="pageTest"> {{pageTest}} </td>
                 </tr>
             {{/each}}
             </tbody>

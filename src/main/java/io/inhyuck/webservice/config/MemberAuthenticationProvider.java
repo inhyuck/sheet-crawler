@@ -3,8 +3,9 @@
  * Author: inhyuck | https://github.com/inhyuck
  */
 
-package io.inhyuck.webservice.domain.member;
+package io.inhyuck.webservice.config;
 
+import io.inhyuck.webservice.entity.member.Member;
 import io.inhyuck.webservice.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;

@@ -1,4 +1,4 @@
-package io.inhyuck.webservice.domain.resume;
+package io.inhyuck.webservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
