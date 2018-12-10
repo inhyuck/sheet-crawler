@@ -1,4 +1,4 @@
-package io.inhyuck.webservice.domain.resume;
+package io.inhyuck.webservice.entity.resume;
 
 import lombok.Builder;
 import lombok.Data;
@@ -24,4 +24,5 @@ public class ResumeDevelop {
     private String checkA;
     private String checkB;
     private String checkC;
+    private String pageTest; //서류합격 여부 o, x
 }

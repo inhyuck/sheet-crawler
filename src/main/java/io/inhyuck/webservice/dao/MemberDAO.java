@@ -1,7 +1,7 @@
 package io.inhyuck.webservice.dao;
 
 import io.inhyuck.webservice.config.MySheetProperties;
-import io.inhyuck.webservice.domain.member.Member;
+import io.inhyuck.webservice.entity.member.Member;
 import io.inhyuck.webservice.dao.sheet.SheetAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

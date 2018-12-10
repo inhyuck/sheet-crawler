@@ -5,7 +5,7 @@
 
 package io.inhyuck.webservice.controller;
 
-import io.inhyuck.webservice.domain.member.LoginForm;
+import io.inhyuck.webservice.model.member.LoginForm;
 import io.inhyuck.webservice.service.MemberService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

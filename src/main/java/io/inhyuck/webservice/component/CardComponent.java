@@ -1,9 +1,9 @@
 package io.inhyuck.webservice.component;
 
 import io.inhyuck.webservice.config.CardProperties;
-import io.inhyuck.webservice.domain.resume.Card;
-import io.inhyuck.webservice.domain.resume.ResumeDesign;
-import io.inhyuck.webservice.domain.resume.ResumeDevelop;
+import io.inhyuck.webservice.dto.Card;
+import io.inhyuck.webservice.entity.resume.ResumeDesign;
+import io.inhyuck.webservice.entity.resume.ResumeDevelop;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

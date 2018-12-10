@@ -3,7 +3,7 @@
  * Author: inhyuck | https://github.com/inhyuck
  */
 
-package io.inhyuck.webservice.domain.member;
+package io.inhyuck.webservice.model.member;
 
 import lombok.Data;
 
