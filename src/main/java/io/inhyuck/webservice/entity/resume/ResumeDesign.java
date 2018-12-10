@@ -23,4 +23,5 @@ public class ResumeDesign {
     private String checkA;
     private String checkB;
     private String checkC;
+    private String pageTest; //서류합격 여부 o, x
 }

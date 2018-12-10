@@ -9,10 +9,12 @@ import io.inhyuck.webservice.entity.resume.ResumeDevelop;
 import io.inhyuck.webservice.dto.DesignerResumeResponseDto;
 import io.inhyuck.webservice.dto.DeveloperResumeResponseDto;
 import io.inhyuck.webservice.dto.ResumeListResponseDto;
+import io.inhyuck.webservice.entity.resume.ResumeSimple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -28,8 +30,10 @@ public class ResumeService {
     static final String DESIGNER = "designer";
 
     public ResumeListResponseDto findAll(String role) throws IOException {
+        List<ResumeSimple> resumeSimpleList = resumeDAO.findAll(role);
+        resumeSimpleList.sort(Comparator.comparing(ResumeSimple::getPageTest)); //서류통과여부 정렬
         return ResumeListResponseDto.builder()
-                .resumeSimpleList(resumeDAO.findAll(role))
+                .resumeSimpleList(resumeSimpleList)
                 .role(role)
                 .build();
     }

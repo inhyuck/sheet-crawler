@@ -54,6 +54,7 @@ public class ResumeDAO {
                     .checkA(getCheckValue(value.get(value.size() - 4).toString(), role.equals(DEVELOPER) ? "cto" : ""))
                     .checkB(getCheckValue(value.get(value.size() - 3).toString(), role.equals(DEVELOPER) ? "coo" : "ceo"))
                     .checkC(getCheckValue(value.get(value.size() - 2).toString(), role.equals(DEVELOPER) ? "cmo" : "cdo"))
+                    .pageTest(value.get(value.size() - 1).toString())
                     .build();
             resumeList.add(resumeSimple);
         }
@@ -87,6 +88,7 @@ public class ResumeDAO {
                 .checkA(getCheckValue(value.get(value.size() - 4).toString(), "cto"))
                 .checkB(getCheckValue(value.get(value.size() - 3).toString(), "coo"))
                 .checkC(getCheckValue(value.get(value.size() - 2).toString(), "cmo"))
+                .pageTest(value.get(value.size() - 1).toString())
                 .build();
     }
 
@@ -113,6 +115,7 @@ public class ResumeDAO {
                 .checkA(getCheckValue(value.get(value.size() - 4).toString(), ""))
                 .checkB(getCheckValue(value.get(value.size() - 3).toString(), "ceo"))
                 .checkC(getCheckValue(value.get(value.size() - 2).toString(), "cdo"))
+                .pageTest(value.get(value.size() - 1).toString())
                 .build();
     }
 
